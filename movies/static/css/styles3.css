@@ -1,0 +1,130 @@
+/* static/css/styles3.css */
+
+body {
+    background-color: rgb(221, 238, 241);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #5f2cec;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 150px;
+    margin-right: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="decimal"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+.btn-custom {
+    margin-top: 20px;
+    background:#0099ff;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease; 
+}
+
+.btn-custom:hover {
+    background: linear-gradient(45deg, #0056b3, #0099ff); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-custom:active {
+    background: linear-gradient(45deg, #004080, #0084ff);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+table {
+    
+    width: 89%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* More specific selector */
+.ui-autocomplete {
+    border: 1px solid #b3cde0 !important; /* Light Blue border */
+    background-color: #a9e4d7 !important; /* Mint Green background */
+    border-radius: 4px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Style individual autocomplete items */
+.ui-menu-item {
+    padding: 2px 8px !important; /* Adequate padding */
+    cursor: pointer !important;
+    color: #000000 !important; /* Light Blue text */
+    font-size: 14px; /* Slightly larger text */
+    border-bottom: 1px solid #e5e5e5; /* Light Gray bottom border */
+}
+
+/* Hover effect */
+.ui-menu-item:hover {
+    background-color: #b3cde0 !important; /* Light Blue background on hover */
+    color: #ffffff !important; /* White text on hover */
+}
+
+/* Highlighted item */
+.ui-menu-item.ui-state-focus {
+    background-color: #a9e4d7 !important; /* Mint Green background for focused item */
+    color: #ffffff !important; /* White text for focused item */
+}
+
+
+
+
+/* styles3.css */
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #f1f1f1; /* Light gray color on hover */
+}
+

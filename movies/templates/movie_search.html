@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    {% load static %}
+
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles3.css' %}"> 
+    <script src="{% static 'js/movie_search.js' %}"></script>
+
+
+
+</head>
+<body>
+    <h1>Search Movies</h1>
+    
+    <form method="GET" action="{% url 'movie_search' %}">
+        <div class="form-group">
+            <label for="movie_name">Movie Name:</label>
+            <input type="text" id="movie_name" name="movie_name" placeholder="Enter movie name" value="{{ request.GET.movie_name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="year_of_release">Year of Release:</label>
+            <input type="number" id="year_of_release" name="year_of_release" placeholder="Enter year" value="{{ request.GET.year_of_release }}">
+        </div>
+
+        <div class="form-group">
+            <label for="movie_rating">Movie Rating:</label>
+            <select id="movie_rating" name="movie_rating">
+                <option value="">Select rating range</option>
+                <option value="below_8" {% if request.GET.movie_rating == 'below_8' %}selected{% endif %}>Below 8</option>
+                <option value="8_9" {% if request.GET.movie_rating == '8_9' %}selected{% endif %}>8-9</option>
+                <option value="9_10" {% if request.GET.movie_rating == '9_10' %}selected{% endif %}>9-10</option>
+            </select>
+        </div> 
+        <div class="form-group">
+            <button type="submit" class="btn-custom">SEARCH</button>
+        </div>
+    </form>
+
+    <hr>
+    <h2>Search Results</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Movie Name</th>
+                <th>Year of Release</th>
+                <th>Rating</th>
+                <th>Gross</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr class="clickable-row" data-href="{% url 'movie_detail' movie.pk %}">
+                <td>{{ movie.movie_name }} </td>
+                <td>{{ movie.year_of_release }}</td>
+                <td>{{ movie.movie_rating }}</td>
+                <td>{{ movie.gross }}</td>
+            </tr>
+            
+            {% empty %}
+            <tr>
+                <td colspan="4"><b>No movies found.</b></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(function() {
+            $("#movie_name").autocomplete({
+                source: "{% url 'autocomplete' %}",
+                autoFocus: true,
+            });
+        });
+    </script>
+ 
+</body>
+</html>
